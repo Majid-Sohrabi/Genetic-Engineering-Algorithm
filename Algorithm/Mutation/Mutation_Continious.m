@@ -12,7 +12,7 @@ function y=Mutation_Continious(x, mu, model)
     sigma=0.1*(VarMax-VarMin);
     
     y=x;
-    y(j)=x(j)+(sigma*randn(size(j)))';
+    y(j)=x(j)+(sigma*randn(size(j)));
     
     y=max(y,VarMin);
     y=min(y,VarMax);

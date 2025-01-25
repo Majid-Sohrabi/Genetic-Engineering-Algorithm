@@ -100,7 +100,9 @@ for It=1:Info.Iteration
         temp_Scens_2 = repmat(individual, NMutate_Scenario, 1);
         [~,Mask,~]=Analyze(pop(1:(Info.PScenario2*Info.Npop)),Info);
         for i=1:NMutate_Scenario
-            temp_Scens_2(i).Position = MaskMutation(Info.MaskMutationIndex, pop(randsample(1:(Info.PScenario2*Info.Npop),1)).Position, Mask, Info.Model);
+            ii = randsample(1:(Info.PScenario2*Info.Npop),1);
+            temp_Scens_2(i).Position = MaskMutation(Info.MaskMutationIndex, pop(randsample(1:(Info.PScenario2*Info.Npop),1)).Position, Mask(ii,:), Info.Model);
+            
             % evaluate
             temp_Scens_2(i).Cost = costfunction(temp_Scens_2(i).Position);
         end
@@ -132,7 +134,7 @@ for It=1:Info.Iteration
     BestCost=[BestCost; pop(1).Cost];
 
     % Show Iteration Information
-    % disp(['Iteration ' num2str(It)  ', Best Cost = ' num2str(BestCost(It))]);
+    disp(['Iteration ' num2str(It)  ', Best Cost = ' num2str(BestCost(It))]);
     
     time = toc;
     if time>=Info.TimeLimit

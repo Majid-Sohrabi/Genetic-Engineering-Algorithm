@@ -66,5 +66,5 @@ if index==1
             [Ans(j,4).MinCost, Ans(j,4).BestCost, pop_GEA] = Algorithm_GA(Info, [1,1,1], pop);
         end
     end
-    save('Saved_Data_Funcitons_Table1_M1');
+    % save('Saved_Data_Funcitons_Table1_M1');
 end
